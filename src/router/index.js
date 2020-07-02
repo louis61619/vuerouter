@@ -29,7 +29,8 @@ const routes = [
 
 const router = new VueRouter({
   routes,
-  // mode: 'history' //history模式
+  // mode: 'history' //history模式 hash為hash模式
+  linkActiveClass: 'active', //將路由自動匹配的class標籤router-link  將class標籤渲染為active
 })
 
 //3.將router對象傳入實例中
