@@ -3,8 +3,18 @@
 import VueRouter from 'vue-router'
 import Vue from 'vue'
 
-import Home from '../components/Home'
-import About from '../components/About'
+// import Home from '../components/Home'
+// import About from '../components/About'
+// import User from '../components/User'
+
+//路由懶加載的寫法
+
+const Home = () => import('../components/Home')
+const About = () => import('../components/About')
+const User = () => import('../components/User')
+
+const News = () => import('../components/News')
+const Events = () => import('../components/Events')
 
 //1.通過vue.use(插件), 安裝插件
 Vue.use(VueRouter)
@@ -18,11 +28,31 @@ const routes = [
 
   {
     path: '/home',
-    component: Home
+    component: Home,
+    children: [
+      {
+        path: '/',
+        redirect: 'news'
+      },
+      {
+        path: 'news',
+        component: News
+      },
+      {
+        path: 'events',
+        component: Events
+      }
+      
+    ]
+    
   },
   {
     path: '/about',
     component: About
+  },
+  {
+    path: '/user/:userId',
+    component: User
   }
 
 ]
