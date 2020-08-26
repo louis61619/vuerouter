@@ -9,12 +9,18 @@
 
 <script>
 export default {
-  name: "user",
+  name: "User",
   computed: {
     userId() {
       //獲取前面組件的資料
       return this.$route.params.userId
     }
+  },
+  created() {
+    console.log('user create')
+  },
+  destroyed() {
+    console.log('user destroyed')
   },
 }
 </script>

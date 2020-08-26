@@ -6,21 +6,41 @@
     <router-link to="/home/events">活動</router-link>
     <router-view></router-view>
     <cpn></cpn>
-    
-    
   </div>
 </template>
 
 <script>
-import Cpn from './Cpn.vue';
+import Cpn from "./Cpn.vue";
 export default {
   name: "Home",
   components: {
     Cpn
   },
-}
+  data() {
+    return {
+      path: '/home/news'
+    }
+  },
+  created() {
+    console.log("home created");
+    
+    // this.$router.push('/home/news')
+        
+  },
+  destroyed() {
+    console.log("home destroyed");
+  },
+  activated() {
+    console.log("actived")
+    this.$router.push(this.path);
+  },
+  beforeRouteLeave(to, from, next) {
+    console.log(this.path);
+    this.path = this.$route.path;
+    next();
+  }
+};
 </script>
 
 <style>
-
 </style>

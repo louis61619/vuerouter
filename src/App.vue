@@ -7,11 +7,16 @@
     <button @click="aboutClick">關於</button>
     <button @click="userClick">用戶</button> -->
     <router-link to="/home">首頁</router-link>
-    <router-link to="/about">關於</router-link>
+    <router-link :to="{path: '/about'}">關於</router-link>
     <router-link :to="'/user/' + userId">用戶</router-link>
+    <!-- <router-link :to="{path: '/profile', query: {name: 'Renny', age: '18', height: '1.75'}}">檔案</router-link> -->
+    <button @click="profileClick">檔案</button>
+    <h2>11111111111</h2>
+    <keep-alive exclude="Profile,User">
+      <router-view></router-view>
+    </keep-alive>
     
     
-    <router-view></router-view>
   </div>
   
 </template>
@@ -42,6 +47,17 @@ export default {
       
   //     this.$router.replace('/user')
   //   }
+        profileClick() {
+          this.$router.replace({
+            path: '/profile',
+            parmas: {
+              name: 'Renny',
+              age: '25',
+              height: '1.75'
+            }
+          })
+        },
+        
    },
   
 }
