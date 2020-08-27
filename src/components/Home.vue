@@ -4,7 +4,10 @@
     <p>我是首頁內容， 哈哈哈</p>
     <router-link to="/home/news">新聞</router-link>
     <router-link to="/home/events">活動</router-link>
-    <router-view></router-view>
+    <transition>
+      <router-view></router-view>
+    </transition>
+    
     <cpn></cpn>
   </div>
 </template>
