@@ -58,9 +58,9 @@ const routes = [
     path: '/user/:userId',
     name: 'user',
     component: User,
-    // meta: {
-    //   title: '用戶'
-    // },
+    meta: {
+      title: '用戶'
+    },
   },
   {
     path: '/profile',
