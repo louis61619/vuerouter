@@ -35,7 +35,7 @@ export default {
   },
   activated() {
     console.log("actived")
-    this.$router.push(this.path);
+    this.$router.replace(this.path);
   },
   beforeRouteLeave(to, from, next) {
     console.log(this.path);

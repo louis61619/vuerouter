@@ -55,12 +55,24 @@ const routes = [
     },
   },
   {
-    path: '/user/:userId',
+    path: '/user/:userId/:userAge',
     name: 'user',
     component: User,
     meta: {
       title: '用戶'
     },
+    children: [
+      
+      {
+        path: 'news',
+        component: News
+      },
+      {
+        path: 'events',
+        component: Events
+      }
+      
+    ]
   },
   {
     path: '/profile',
@@ -88,6 +100,12 @@ router.beforeEach((to, from, next) => {
   next(); //跳轉頁面
 
 })
+
+//路由路徑相同時不報錯 
+const originalPush = VueRouter.prototype.replace
+   VueRouter.prototype.replace = function replace(location) {
+   return originalPush.call(this, location).catch(err => err)
+}
 
 //3.將router對象傳入實例中
 export default router;

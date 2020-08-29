@@ -14,7 +14,7 @@
     <button @click="profileClick">檔案</button>
     <h2>11111111111</h2>
     <!-- 保持活躍 -->
-    <keep-alive exclude="Profile,User">
+    <keep-alive exclude="Profile">
       <router-view></router-view>
     </keep-alive>
   </div>
@@ -51,13 +51,13 @@ export default {
     userClick() {
       this.$router.replace({
         // path: '/user/' + this.userId + '/' + this.userAge,
-        path: '/user/' + this.userId,
-        name: 'user',
+        path: "/user/" + this.userId,
+        name: "user",
         params: {
           userId: this.userId,
-          userAge: this.userAge
-        }
-      })
+          userAge: this.userAge,
+        },
+      });
     },
     profileClick() {
       this.$router.replace({
@@ -69,6 +69,12 @@ export default {
         },
       });
     },
+  },
+  mounted() {
+    console.log(this.$http)
+    this.$http.get("http://localhost:81/123.json").then((res) => {
+      console.log(res); //此處的res物件包含了json的檔案資訊和資料，我們需要的json資料存在於body屬性中
+    });
   },
 };
 </script>
